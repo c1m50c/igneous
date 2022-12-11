@@ -1,0 +1,8 @@
+[package]
+name = "igneous-components"
+authors = [ "c1m50c <https://github.com/c1m50c>" ]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+iced = "0.6.0"
