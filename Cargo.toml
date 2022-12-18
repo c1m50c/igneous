@@ -3,10 +3,13 @@ name = "igneous"
 authors = [ "c1m50c <https://github.com/c1m50c>" ]
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 
 [dependencies]
 igneous-components = { path = "components/" }
-iced = "0.6.0"
+igneous-types = { path = "types/" }
+eframe = "0.20.1"
+egui = "0.20.1"
 
 [workspace]
-members = [ "components/" ]
+members = [ "components/", "types/" ]
