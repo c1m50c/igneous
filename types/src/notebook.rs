@@ -1,3 +1,5 @@
+use std::fs;
+
 use super::page::Page;
 
 
@@ -9,8 +11,14 @@ pub struct Notebook {
 
 
 impl Notebook {
-    pub fn from_path(path: impl AsRef<str>) -> Self {
-        todo!();
+    pub fn from_path(path: impl AsRef<str>) -> Result<Self, &'static str> {
+        let file = fs::read_to_string(path.as_ref())
+            .map_err(|_| "Failed to read notebook.")?;
+
+        let object = ron::from_str(file.as_str())
+            .map_err(|_| "Failed to deserialize into `Notebook`.")?;
+
+        return Ok(object);
     }
 }
 
@@ -22,6 +30,7 @@ pub struct Chapter {
 }
 
 
+#[derive(Debug, Clone)]
 pub struct SelectionOption {
     pub identifier: String,
     pub path: String,
